@@ -4,11 +4,8 @@ namespace RepositoryDB
 {
     public class DB : DbContext
     {
-        private readonly string connectionString;
-        public DB(string connectionString)
-        {
-            this.connectionString = connectionString;
-        }
+        private static string? connectionString;
+        public static string ConnectionString { set { connectionString = value; } }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
