@@ -5,6 +5,6 @@ namespace RepositoryDB
     public class Entity
     {
         [Key]
-        public int Id { get; set; }
+        public uint Id { get; set; }
     }
 }

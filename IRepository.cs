@@ -2,7 +2,7 @@
 {
     public interface IRepository<T>
     {
-        T? SelectId(int id);
+        T? SelectId(uint id);
         void Add(T entity);
         void Remove(T entity);
         IQueryable<T> SelectAll();

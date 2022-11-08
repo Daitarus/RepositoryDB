@@ -8,7 +8,7 @@
             this.db = db;
         }
 
-        public T? SelectId(int id)
+        public T? SelectId(uint id)
         {
             return db.Find<T>(id);
         }
