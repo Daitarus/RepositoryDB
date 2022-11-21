@@ -4,8 +4,7 @@ namespace RepositoryDB
 {
     public class DB : DbContext
     {
-        private static string? connectionString;
-        public static string ConnectionString { set { connectionString = value; } }
+        public static string? connectionString;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -19,6 +18,9 @@ namespace RepositoryDB
         {
             try
             {
+                if(connectionString == null)
+                    throw new ArgumentNullException(nameof(connectionString));
+
                 using (new DB()) { }
                 return true;
             }
