@@ -6,7 +6,20 @@ namespace RepositoryDB
     public class DB : DbContext
     {
         private static string? connectionString;
-        public static string ConnectionString { set { connectionString = value; } }
+        public static string ConnectionString 
+        { 
+            set 
+            {
+                if (value == nuul)
+                {
+                    throw new Exception.ArgumentNullException(nameof(ConnectionString));
+                }
+                else
+                {
+                    connectionString = value;
+                }
+            } 
+        }
 
         public DB()
         {
@@ -22,10 +35,7 @@ namespace RepositoryDB
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            if (connectionString != null)
-            {
-                optionsBuilder.UseNpgsql(connectionString);
-            }
+            optionsBuilder.UseNpgsql(connectionString);
         }
 
         public static bool CheckDB(string script)
